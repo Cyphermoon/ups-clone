@@ -25,7 +25,7 @@ const TabNavigator = () => {
                 return null
             }
         })}>
-            <Tab.Screen name='Home' component={HomeScreen} />
+            <Tab.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
             <Tab.Screen name='Orders' component={OrderScreen} />
         </Tab.Navigator>
     )
