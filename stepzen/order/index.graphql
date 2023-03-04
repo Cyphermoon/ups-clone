@@ -3,7 +3,8 @@
     createdAt: Date
     shippingCost: Int
     trackingId: String
-    address: String
+    Address: String
+    City: String
     Lat: Float
     Lng: Float
     trackingItems: TrackingItemList

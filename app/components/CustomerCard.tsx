@@ -19,7 +19,10 @@ const CustomerCard = ({ name, userId, email }: Props) => {
     const navigation = useNavigation<homeCompositeTab>()
 
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("MyModal", {
+            userId,
+            name
+        })}>
             <Card containerStyle={{
                 borderRadius: 15,
                 paddingHorizontal: 13

@@ -40,10 +40,10 @@ type TrackingItemList = {
     createdAt: Date;
     shippingCost: number;
     trackingId: string;
-    address: string;
+    Address: string;
     Lat: number;
     Lng: number;
     trackingItems: TrackingItemList;
-    city: string
+    City: string
   }
     

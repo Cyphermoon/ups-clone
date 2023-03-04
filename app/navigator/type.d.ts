@@ -16,3 +16,7 @@ export type TabStackParamList = {
 export type homeCompositeTab = CompositeNavigationProp<
 BottomTabNavigationProp<TabStackParamList, "Home">,
 NativeStackNavigationProp<RootStackParamList>>
+
+export type ModalCompositeProp = CompositeNavigationProp<
+BottomTabNavigationProp<TabStackParamList>,
+NativeStackNavigationProp<RootStackParamList, "MyModal">>
