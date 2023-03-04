@@ -7,8 +7,8 @@ import { GET_ORDERS } from "../graphql/queries"
     const [orders, setOrders] = useState<Order[]>()
 
     useEffect(() => {
-        if(loading) return
-        const orders:Order[] = data.getOrders.map(({value}: OrderResponse) => {
+        if(loading && !data) return
+        const orders:Order[] = data.getOrder.map(({value}: OrderResponse) => {
             return {
                 carrier: value.carrier,
                 createdAt: value.createdAt,

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { homeCompositeTab } from '../navigator/type'
 import { useQuery } from '@apollo/client'
 import { GET_CUSTOMERS } from '../../graphql/queries'
+import CustomerCard from '../components/CustomerCard'
 
 const HomeScreen = () => {
     const navigation = useNavigation<homeCompositeTab>()
@@ -32,9 +33,13 @@ const HomeScreen = () => {
 
                 onChangeText={setInput} />
 
-            {!loading ? data?.getCustomers.map(({ name: ID, value: { name, email } }: CustomerResponse) => {
-                return <Text>{email} -{name}</Text>
-            }) : <Text>Loading</Text>}
+            {!loading ? data?.getCustomers
+                .filter((customer: customerListType) => customer.value.name.includes(input ?? ""))
+                .map(({ name: Id, value: { name, email } }: CustomerResponse) => {
+                    return <CustomerCard key={Id} userId={Id} name={name} email={email} />
+                }) : <Text>Loading</Text>}
+
+            {/* <CustomerCard name='Kelvin' email='Kelvin@email.com' userId='12390-8238' /> */}
         </ScrollView>
     )
 }
