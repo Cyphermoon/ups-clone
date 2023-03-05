@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
 import { Card, Icon } from '@rneui/themed'
+import MapView, { Marker } from 'react-native-maps'
 
 interface props {
     order: Order
@@ -13,7 +14,7 @@ const DeliveryCard = ({ order, color = "#59c1cc" }: props) => {
 
     return (
 
-        <View className='text-white flex grow flex-col justify-center'>
+        <View className='text-white flex-col justify-center mb-10'>
             <Card containerStyle={style.card}
             >
                 <View className='mb-5 space-y-1'>
@@ -41,6 +42,23 @@ const DeliveryCard = ({ order, color = "#59c1cc" }: props) => {
                 </View>
 
             </Card>
+
+            <MapView
+                style={style.map}
+                initialRegion={{
+                    latitude: order.Lat,
+                    longitude: order.Lng,
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005
+                }} >
+                {order.Lat && order.Lng && <Marker
+                    title="Delivery Location"
+                    identifier='destination'
+                    description={order.Address}
+                    coordinate={{ latitude: order.Lat, longitude: order.Lng }} />}
+
+            </MapView>
+
         </View>
     )
 }
@@ -51,10 +69,15 @@ const style = StyleSheet.create({
         backgroundColor: "#59c1cc",
         padding: 10,
         marginHorizontal: "auto",
-        borderRadius: 10
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
     text: {
         textAlign: "center",
+    },
+    map: {
+        width: "100%",
+        height: 200
     }
 })
 
