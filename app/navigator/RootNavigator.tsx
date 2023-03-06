@@ -4,6 +4,7 @@ import React from 'react'
 import TabNavigator from './TabNavigator';
 import { RootStackParamList } from './type';
 import ModalScreen from '../screens/ModalScreen';
+import OrderScreen from '../screens/OrderScreen';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>()
 
@@ -26,6 +27,22 @@ const RootNavigator = () => {
                     options={{ headerShown: false }}
                     name="MyModal"
                     component={ModalScreen} />
+
+            </RootStack.Group>
+
+            <RootStack.Group>
+
+                <RootStack.Screen
+                    options={({ route }) => {
+                        return {
+                            headerShown: true,
+                            headerTitle: route.params.order.trackingItems.customer.name,
+                            headerBackTitle: "Deliveries",
+                            headerTitleStyle: { color: "black " }
+                        }
+                    }}
+                    name="Order"
+                    component={OrderScreen} />
 
             </RootStack.Group>
 

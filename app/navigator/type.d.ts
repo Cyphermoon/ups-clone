@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 export type RootStackParamList = {
     Main: undefined,
     MyModal: {userId: string, name: string},
-    Order: any
+    Order: {order: Order},
 }
 
 export type TabStackParamList = {
@@ -20,3 +20,7 @@ NativeStackNavigationProp<RootStackParamList>>
 export type ModalCompositeProp = CompositeNavigationProp<
 BottomTabNavigationProp<TabStackParamList>,
 NativeStackNavigationProp<RootStackParamList, "MyModal">>
+
+export type OrderScreenCompositeProp = CompositeNavigationProp<
+BottomTabNavigationProp<TabStackParamList, "Orders">,
+NativeStackNavigationProp<RootStackParamList>>

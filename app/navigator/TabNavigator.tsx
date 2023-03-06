@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
-import OrderScreen from '../screens/OrderScreen';
+import OrderScreen from '../screens/OrdersScreen';
 import { TabStackParamList } from './type';
 import { Icon } from 'react-native-elements';
 
@@ -26,7 +26,21 @@ const TabNavigator = () => {
             }
         })}>
             <Tab.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
-            <Tab.Screen name='Orders' component={OrderScreen} />
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                    tabBarLabel({ focused, color }) {
+                        return (
+                            <Text style={{
+                                color: focused ? "#EB6A7C" : color
+                            }}>
+                                Orders
+                            </Text>
+                        )
+                    }
+                }}
+                name='Orders'
+                component={OrderScreen} />
         </Tab.Navigator>
     )
 }
