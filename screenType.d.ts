@@ -11,7 +11,7 @@ type customerListType = {
 type TrackingItemList = {
     customer_id: string;
     items: Item[];
-    customer: Customer;
+    customer: Customers;
   }
 
   type Items = {
